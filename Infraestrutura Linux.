@@ -1,0 +1,39 @@
+const int umidade=8;
+int checagem=7;
+const int umidade2=3;
+int checagem2=5;
+
+void setup()
+{
+  //lado 1
+  pinMode(9, OUTPUT);
+  pinMode(umidade, INPUT);
+  //lado 2
+  pinMode(10, OUTPUT);
+  pinMode(umidade2, INPUT);
+}
+
+void loop()
+{
+  checagem = digitalRead(umidade);
+  checagem2 = digitalRead(umidade2);
+  //ambos c baixa humidade
+  if (checagem == HIGH && checagem2 == HIGH){
+    digitalWrite(9, HIGH);
+    digitalWrite(10, HIGH);
+    delay(5000);
+  }
+  //2 com baixa humidade
+  if (checagem == LOW && checagem2 == HIGH){
+    digitalWrite(9, LOW);
+    digitalWrite(10, HIGH);
+    delay(5000);
+  }
+  //1 com baixa humidade
+  if (checagem == HIGH && checagem2 == LOW){
+    digitalWrite(9, HIGH);
+    digitalWrite(10, LOW);
+    delay(5000);
+  }
+  delay(1800000);
+}
